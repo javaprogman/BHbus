@@ -1,6 +1,6 @@
 package net.javaprogman.bus;
 
-import net.javaprogman.bus.Threads.TimeGo;
+import net.javaprogman.bus.movement.TimeGo;
 
 import java.util.ArrayList;
 
@@ -41,8 +41,7 @@ public abstract class Bus implements Vehicl {
     }*/
 
     public void go() {
-        //Thread threadBus = new TimeGo(this);
-       new TimeGo(this).run();
+       new TimeGo(this).start();
 
     }
 }

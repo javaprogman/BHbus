@@ -1,4 +1,8 @@
 package net.javaprogman.bus.movement;
 
-public class Stop {
+public interface Stop {
+
+    //наверное правильнее чтобы автобус проверял, что он приехал на остановку, но реализация такая.
+    public boolean isStop();
+
 }
