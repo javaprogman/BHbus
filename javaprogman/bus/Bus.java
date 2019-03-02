@@ -1,15 +1,19 @@
 package net.javaprogman.bus;
 
+import net.javaprogman.bus.Threads.TimeGo;
+
 import java.util.ArrayList;
 
-public abstract class bus implements vehicl {
+public abstract class Bus implements Vehicl {
 
     private ArrayList<Integer> route;
-    private Integer busNumber;
+    private int busNumber;
+    private int speed;
 
-    bus (ArrayList<Integer> route, Integer busNumber){
+    Bus(ArrayList<Integer> route, Integer busNumber, int speed){
         this.route = route;
         this.busNumber = busNumber;
+        this.speed = speed;
     }
 
     public ArrayList<Integer> getRoute() {
@@ -28,8 +32,17 @@ public abstract class bus implements vehicl {
         this.busNumber = busNumber;
     }
 
-    @Override
+    public int getSpeed() {
+        return speed;
+    }
+
+    /*public void setSpeed(int speed) {
+        this.speed = speed;
+    }*/
+
     public void go() {
+        //Thread threadBus = new TimeGo(this);
+       new TimeGo(this).run();
 
     }
 }

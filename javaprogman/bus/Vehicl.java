@@ -1,6 +1,6 @@
 package net.javaprogman.bus;
 
-public interface vehicl {
+public interface Vehicl {
 
     public void go();
 }
