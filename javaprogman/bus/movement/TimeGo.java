@@ -2,8 +2,6 @@ package net.javaprogman.bus.movement;
 
 import net.javaprogman.bus.Bus;
 
-import java.util.ArrayList;
-
 public class TimeGo extends Thread {
 
     private Bus bus;
@@ -20,26 +18,28 @@ public class TimeGo extends Thread {
     public synchronized void run() {
 
 
-        // S = V*t -> t = S/V        1/60
+        // S = V*t -> t = S/V
+        // v - вспомогательная переменная для нахождения времени прохождения автобусом единицу пути.
         v = f/bus.getSpeed();
+        // пока не приехали на последнюю остановку выполняем цикл
         while( i < bus.getRoute().size()) {
             try {
+                //если мы не на остановке едим дальше
                 while (!new busStop().isStop(bus.getRoute().get(i), passedDistance)){
-                   // this.sleep((int)(((double)(1/bus.getSpeed()))*10000));
+
+                    // подсчитываем пройденную дистанцию.
                     this.sleep((long)(v*1000));
-                    //this.wait((1/bus.getSpeed()));
                     passedDistance++;
-                    //this.join((1/bus.getSpeed()));
-                    //this.notify();
                 }
+                //говорим, что мы на оостановке, отыхаем.
                 System.out.println("Bus with nember: " + bus.getBusNumber() + "go with speed " + bus.getSpeed() +
                         " stop on busStop" + i + " distance - " + bus.getRoute().get(i));
+
+                this.sleep(2000);
+                //устанавливаем следующую остановку (планку для автобуса)
                 i++;
 
-
             } catch (InterruptedException e) {
-                System.out.println(e);
-            } catch (IllegalMonitorStateException e) {
                 System.out.println(e);
             }
         }

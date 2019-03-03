@@ -3,13 +3,10 @@ package net.javaprogman;
 import net.javaprogman.bus.Bus;
 import net.javaprogman.bus.MiniBus;
 import net.javaprogman.bus.PassengerBus;
-import net.javaprogman.bus.movement.TimeGo;
 
 import java.util.ArrayList;
 
-public class Main {
-
-    static TimeGo busgoes;
+public class mainBus {
 
     public static void main(String[] args) {
 
@@ -40,9 +37,8 @@ public class Main {
         route3.add(9);
         route3.add(100);
 
-        // buy bus
+
         Bus bus1 = new MiniBus(route1,123,60);
-        //Bus bus1 = new PassengerBus(route1,123,60);
         Bus bus2 = new PassengerBus(route2,456,50);
         Bus bus3 = new PassengerBus(route3,789,30);
 
